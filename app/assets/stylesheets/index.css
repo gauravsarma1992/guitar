@@ -1,0 +1,24 @@
+.box{
+  padding:20px;border:1px solid #eee;margin:10px;border-radius: 20px 20px;
+}
+.box:hover{
+  cursor: pointer;box-shadow: 0 0 14px 2px #333;
+}
+
+.tune-box{
+  border:1px solid #ccc;border-radius: 10px 10px;padding-top: 20px;padding-bottom: 20px;margin: 4px;
+}
+
+.tune-box:hover{
+  cursor: pointer;box-shadow: 0 0 14px 1px #333;
+}
+.string{
+  padding:10px;height: 50px;margin: 4px;border:1px solid #ccc;
+}
+
+.s1{background: #000}
+.s2{background: #aaa;}
+.s3{background: #bbb;}
+.s4{background: #ccc;}
+.s5{background: #ddd;}
+.s6{background: #eee}

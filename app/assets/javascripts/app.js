@@ -1,0 +1,1 @@
+var guitarApp = angular.module('guitarApp',['ngResource','ngAudio']);

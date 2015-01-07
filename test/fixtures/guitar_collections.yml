@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  s1: MyString
+  s2: MyString
+  s3: MyString
+  s4: MyString
+  s5: MyString
+  s6: MyString
+  deleted: false
+
+two:
+  title: MyString
+  s1: MyString
+  s2: MyString
+  s3: MyString
+  s4: MyString
+  s5: MyString
+  s6: MyString
+  deleted: false
