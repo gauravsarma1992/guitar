@@ -37,8 +37,16 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
   }
 
   $scope.deleteGuitar = function(guitar){
+     
+//      $scope.guitars.splice(guitar.id,1);
+
     route().delete({id: guitar.id},function(){
-      $scope.guitars.splice(guitar.id,1);
+      angular.forEach($scope.guitars,function(item){
+        if(item.id == guitar.id){
+          item.deleted = true;
+        }
+      })
+
       alert("deleted");
     });
   }
