@@ -12,8 +12,13 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
     $scope.sounds.play();
   }
 
+  // $scope.guitars = route().query();
 
-  route().query(function(item){
+  // $scope.guitars.$promise.then(function(){
+  //   // console.log($scope.guitars);
+  // })
+
+  route().query().$promise.then(function(item){
     angular.forEach(item, function(i){
       $scope.guitars.push(i);
     })
@@ -51,21 +56,7 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
     });
   }
 
-  $scope.saveGuitar = function(){
-    var temp = {};
-    temp.title = $scope.newGuitar;
-    temp.s1 = "A";
-    temp.s2 = "B";
-    temp.s3 = "C";
-    temp.s4 = "D";
-    temp.s5 = "E";
-    temp.s6 = "F";
-    temp.deleted = false;
-    route().save(temp,function(data){
-      $scope.guitars.push(data.guitar);
-    })
-    $scope.newGuitar = "";  
-  }
+ 
 
 
 }])
