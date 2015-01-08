@@ -25,23 +25,20 @@ guitarApp.directive('guitarCollector',function(){
     guitarCollector.scope = { guitars : "=collection" };
     guitarCollector.controller = function($scope){
       $scope.saveGuitar = function(){
+          // console.log("eh");
           var temp = {};
           temp.title = $scope.newGuitar;
-          temp.s1 = "A";
-          temp.s2 = "B";
-          temp.s3 = "C";
-          temp.s4 = "D";
-          temp.s5 = "E";
-          temp.s6 = "F";
-          temp.deleted = false;
-          route().save(temp,function(data){
-            $scope.guitars.push(data.guitar);
+          guitar().save(temp,function(data){
+            guitar().get({id: JSON.parse(data.guitar).id}).$promise.then(function(item){
+              $scope.guitars.push(item);
+            });
+            console.log($scope.guitars);
           })
           $scope.newGuitar = "";  
         }
     };
     guitarCollector.templateUrl = "/templates/newguitar.html";
-    // guitarCollector.template = "{{guitars}}";
+    // guitarCollector.template = "{{guitars}}"
     return guitarCollector;
 })
 

@@ -17,12 +17,12 @@
 //= require dependencies/angular.min
 //= require dependencies/angular-resource.min
 //= require dependencies/angular.audio
+//= require dependencies/ng-slider.min
 
 //= require app
 
 //= require services/resources
 
 //= require directives/enter
-
 
 //= require_tree .

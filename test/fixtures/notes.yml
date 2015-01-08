@@ -2,6 +2,8 @@
 
 one:
   title: MyString
+  sound: MyString
 
 two:
   title: MyString
+  sound: MyString

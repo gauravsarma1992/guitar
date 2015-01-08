@@ -11,7 +11,8 @@
  * file per style scope.
  *
  *= bootstrap
- *= index .
- *= require_tree .
+ *= index
+ *= angular-slider.min
+ *= require_tree
  *= require_self
  */

@@ -2,6 +2,10 @@
 
 one:
   title: MyString
+  value: MyString
+  guitar_collection_id: 
 
 two:
   title: MyString
+  value: MyString
+  guitar_collection_id: 

@@ -12,19 +12,33 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
     $scope.sounds.play();
   }
 
-  // $scope.guitars = route().query();
+  $scope.value = "50";
+      $scope.options = {       
+        from: 1,
+        to: 6,
+        step: 1,
+        dimension: " s"        
+      };
 
-  // $scope.guitars.$promise.then(function(){
+ // $scope.guitars.$promise.then(function(){
   //   // console.log($scope.guitars);
   // })
 
-  route().query().$promise.then(function(item){
+  guitar().query().$promise.then(function(item){
     angular.forEach(item, function(i){
       $scope.guitars.push(i);
     })
   });
 
-  $scope.stringClicked = "s1";
+  note().query().$promise.then(function(item){
+    $scope.notes = [];
+    angular.forEach(item,function(i){
+      $scope.notes[i.title] = i.sound;
+    });
+    console.log($scope.notes);
+  });
+
+  $scope.stringClicked = "1";
   $scope.guitarClicked = $scope.guitars[1];
 
   $scope.clickGuitar = function(guitar){
@@ -34,8 +48,14 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
   $scope.tune = function(note){
     angular.forEach($scope.guitars,function(item){
       if(item.id == $scope.guitarClicked.id){
-        $http.post('/api/v1/guitars/'+item.id+'/tune',{guitarClicked: $scope.guitarClicked.id, stringClicked: $scope.stringClicked, note: note}).success(function(data){
-          item[$scope.stringClicked] = note;
+        $http.post('/api/v1/guitars/'+item.id+'/tune',{guitarClicked: $scope.guitarClicked.id, stringClicked: 's'+$scope.stringClicked, note: note}).success(function(data){
+          // item['s'+$scope.stringClicked] = note;
+          angular.forEach(item.wires,function(i){
+            if(''+i.title+'' == 's'+$scope.stringClicked){
+              i.value = note;
+              console.log(i);
+            }
+          })
         })
       }
     })
@@ -43,17 +63,15 @@ guitarApp.controller('TrialController',["$scope","$http","Route","ngAudio",funct
 
   $scope.deleteGuitar = function(guitar){
      
-//      $scope.guitars.splice(guitar.id,1);
+      guitar.$delete({id: guitar.id},function(){
+        angular.forEach($scope.guitars,function(item){
+          if(item.id == guitar.id){
+            item.deleted = true;
+          }
+        })
 
-    route().delete({id: guitar.id},function(){
-      angular.forEach($scope.guitars,function(item){
-        if(item.id == guitar.id){
-          item.deleted = true;
-        }
-      })
-
-      alert("deleted");
-    });
+        alert("deleted");
+      });
   }
 
  

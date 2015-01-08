@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: guitar
+  database: guitarapp
   username: root
   password: root
   host: localhost

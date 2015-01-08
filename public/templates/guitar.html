@@ -1,10 +1,8 @@
 <div class="col-md-3 box"><h3>{{guitar.title}}</h3><br>
-  <div>s1</div><div style="background:{{tuneToNote[guitar.s1]}}" class="col-md-1 string" ng-click="sound(guitar.s1)"></div>
-  <div>s2</div><div style="background:{{tuneToNote[guitar.s2]}}" class="col-md-1 string" ng-click="sound(guitar.s2)"></div>
-  <div>s3</div><div style="background:{{tuneToNote[guitar.s3]}}" class="col-md-1 string" ng-click="sound(guitar.s3)"></div>
-  <div>s4</div><div style="background:{{tuneToNote[guitar.s4]}}" class="col-md-1 string" ng-click="sound(guitar.s4)"></div>
-  <div>s5</div><div style="background:{{tuneToNote[guitar.s5]}}" class="col-md-1 string" ng-click="sound(guitar.s5)"></div>
-  <div>s6</div><div style="background:{{tuneToNote[guitar.s6]}}" class="col-md-1 string" ng-click="sound(guitar.s6)"></div>
+  <div ng-repeat="wires in guitar.wires" data-ng-class="wire.name">
+    <div>{{ wires.title}}</div><div style="background:{{tuneToNote[wires.value]}}" class="col-md-1 string" ng-click="sound(wires.value)"></div>
+  </div>
+
     <div><img ng-click="deleteGuitar(guitar)" src="/images/close.png"></div>
 
 </div>

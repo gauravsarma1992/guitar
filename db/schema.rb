@@ -11,19 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107091735) do
+ActiveRecord::Schema.define(version: 20150108095532) do
 
   create_table "guitar_collections", force: true do |t|
     t.string   "title"
-    t.string   "s1"
-    t.string   "s2"
-    t.string   "s3"
-    t.string   "s4"
-    t.string   "s5"
-    t.string   "s6"
-    t.boolean  "deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notes", force: true do |t|
+    t.string   "title"
+    t.string   "sound"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wires", force: true do |t|
+    t.string   "title"
+    t.string   "value"
+    t.integer  "guitar_collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wires", ["guitar_collection_id"], name: "index_wires_on_guitar_collection_id", using: :btree
 
 end

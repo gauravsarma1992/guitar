@@ -1,1 +1,1 @@
-var guitarApp = angular.module('guitarApp',['ngResource','ngAudio']);
+var guitarApp = angular.module('guitarApp',['ngResource','ngAudio','ngSlider']);
